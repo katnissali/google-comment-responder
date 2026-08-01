@@ -1,0 +1,20 @@
+{
+  "name": "comment-responder-template",
+  "interface": {
+    "displayName": "Comment Responder Template"
+  },
+  "plugins": [
+    {
+      "name": "comment-responder-template",
+      "source": {
+        "source": "local",
+        "path": "./plugins/comment-responder-template"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
