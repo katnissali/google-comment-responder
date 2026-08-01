@@ -19,6 +19,20 @@ codex plugin add comment-responder-template@comment-responder-template
 
 Start a new Codex task after installing so the skill is available.
 
+## Uninstall
+
+Remove the installed plugin:
+
+```bash
+codex plugin remove comment-responder-template@comment-responder-template
+```
+
+If you also want to remove the marketplace source:
+
+```bash
+codex plugin marketplace remove comment-responder-template
+```
+
 ## Requirements
 
 Users need Google Drive access/tools for the plugin to read or reply to comments. The plugin does not grant access to documents by itself.
