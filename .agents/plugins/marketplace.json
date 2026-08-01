@@ -1,14 +1,14 @@
 {
-  "name": "comment-responder-template",
+  "name": "google-comment-responder",
   "interface": {
-    "displayName": "Comment Responder Template"
+    "displayName": "Google Comment Responder"
   },
   "plugins": [
     {
-      "name": "comment-responder-template",
+      "name": "google-comment-responder",
       "source": {
         "source": "local",
-        "path": "./plugins/comment-responder-template"
+        "path": "./plugins/google-comment-responder"
       },
       "policy": {
         "installation": "AVAILABLE",

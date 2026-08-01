@@ -1,9 +1,9 @@
 ---
-name: comment-responder-template
-description: Reusable workflow for responding to existing document comment threads. Use when Codex needs to scan comments on one or more documents, filter by configurable markers such as `AGENT:`, draft concise replies, post replies only to eligible existing threads, resolve threads only when asked, avoid deleting comments, and verify writeback. Works as a generic template for Google Drive comments or any connector/API that exposes comment threads, authors, status, replies, and pagination.
+name: google-comment-responder
+description: Reusable workflow for responding to existing document comment threads. Use when Codex needs to scan comments on one or more documents, filter by configurable markers such as `AGENT:`, draft concise replies, post replies only to eligible existing threads, resolve threads only when asked, avoid deleting comments, and verify writeback. Works as a generic workflow for Google Drive comments or any connector/API that exposes comment threads, authors, status, replies, and pagination.
 ---
 
-# Comment Responder Template
+# Google Comment Responder
 
 ## Overview
 
@@ -74,7 +74,7 @@ Do not ship a config with real private file links unless the user explicitly ask
    - Treat each eligible comment as the task prompt for that thread, subject to the configured filters and write policy.
    - Use the same instruction hierarchy and available resources that Codex would use for a normal user prompt, including memory, `AGENTS.md`, local instructions, tools, skills, files, connected apps, and explicitly provided resources.
    - Let explicit user instructions decide scope and write policy.
-   - Do not add project-specific memory to reusable templates unless the user asks for a project-specific plugin.
+   - Do not add project-specific memory to reusable workflows unless the user asks for a project-specific plugin.
 
 2. Confirm the tool can do the job.
    - Use the native connector/API for the target file system when possible.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Google Comment Responder"
+  short_description: "Reply to selected comment threads safely"
+  default_prompt: "Use $google-comment-responder to respond to comments in _______."

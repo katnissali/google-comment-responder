@@ -1,4 +1,0 @@
-interface:
-  display_name: "Comment Responder Template"
-  short_description: "Reply to selected comment threads safely"
-  default_prompt: "Use $comment-responder-template to respond to comments in _______."

@@ -1,9 +1,9 @@
 {
-  "name": "comment-responder-template",
-  "version": "0.1.0+codex.20260731220846",
+  "name": "google-comment-responder",
+  "version": "0.1.0+codex.20260801004520",
   "interface": {
     "category": "Productivity",
-    "displayName": "AI Comment Responder",
+    "displayName": "Google Comment Responder",
     "developerName": "Emma Arenstein",
     "capabilities": [
       "Interactive",
@@ -14,9 +14,9 @@
       "Respond to _______'s comments on _______ using all resources."
     ],
     "longDescription": "Scans documents for selected comment threads, then drafts and posts concise replies using available resources, context, instructions, and memory.",
-    "shortDescription": "A configurable template for responding to comments in Google Suite documents."
+    "shortDescription": "A configurable workflow for responding to comments in Google Suite documents."
   },
-  "description": "Reusable Codex workflow for safely replying to existing document comment threads. Requires Google Drive tools/access.",
+  "description": "Reusable Codex workflow for safely replying to existing Google Drive comment threads. Requires Google Drive tools/access.",
   "skills": "./skills/",
   "author": {
     "name": "Emma Arenstein"
