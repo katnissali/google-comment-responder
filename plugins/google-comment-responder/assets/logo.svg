@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Google Comment Responder logo">
+  <rect width="512" height="512" rx="96" fill="#F8FAFC"/>
+  <path d="M122 126h268c30 0 54 24 54 54v126c0 30-24 54-54 54H264l-82 62c-17 13-42 1-42-21v-41h-18c-30 0-54-24-54-54V180c0-30 24-54 54-54Z" fill="#2563EB"/>
+  <path d="M152 201h178M152 252h128M302 307l31 31 70-82" fill="none" stroke="#FFFFFF" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
