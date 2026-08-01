@@ -12,7 +12,12 @@ The plugin is intentionally generic. It does not include private document IDs, c
 
 ## Install
 
-In the ChatGPT desktop app, open Plugins and install Comment Responder Template from the marketplace.
+Add this repository as a Codex plugin marketplace, then install the plugin:
+
+```bash
+codex plugin marketplace add katnissali/comment-responder-template --ref main
+codex plugin add comment-responder-template@comment-responder-template
+```
 
 Start a new Codex task after installing so the skill is available.
 
