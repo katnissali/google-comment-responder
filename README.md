@@ -17,7 +17,7 @@ codex plugin marketplace add katnissali/google-comment-responder --ref main
 codex plugin add google-comment-responder@google-comment-responder
 ```
 
-## Uninstall from Codex CLI
+## Update
 
 ```bash
 codex plugin marketplace upgrade google-comment-responder
