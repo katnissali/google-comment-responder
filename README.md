@@ -17,6 +17,13 @@ codex plugin marketplace add katnissali/google-comment-responder --ref main
 codex plugin add google-comment-responder@google-comment-responder
 ```
 
+## Uninstall from Codex CLI
+
+```bash
+codex plugin marketplace upgrade google-comment-responder
+codex plugin add google-comment-responder@google-comment-responder
+```
+
 Start a new Codex CLI task after installing so the skill is available.
 
 ## Desktop app
