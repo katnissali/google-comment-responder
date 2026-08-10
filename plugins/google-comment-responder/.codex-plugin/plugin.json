@@ -1,6 +1,6 @@
 {
   "name": "google-comment-responder",
-  "version": "0.1.0+codex.20260801012334",
+  "version": "0.1.1",
   "interface": {
     "category": "Productivity",
     "displayName": "Google Comment Responder",
@@ -10,10 +10,11 @@
       "Write"
     ],
     "defaultPrompt": [
-      "Respond to comments in _______.",
-      "Respond to _______'s comments on _______ using all resources."
+      "Respond to unresolved AGENT: comments in this Google Doc.",
+      "Draft replies for selected comment threads without posting them.",
+      "Scan these documents and report which comment threads need more evidence before replying."
     ],
-    "longDescription": "Scans documents for selected comment threads, then drafts and posts concise replies using available resources, context, instructions, and memory.",
+    "longDescription": "Google Comment Responder helps Codex handle existing Google Drive, Docs, Sheets, and Slides comment threads with an auditable workflow: scan configured threads, filter eligible requests, read nearby context, draft concise replies, write only to existing threads, avoid deleting comments, resolve only when explicitly asked, and verify writeback.",
     "shortDescription": "Reply to doc comments safely",
     "brandColor": "#2563EB",
     "composerIcon": "./assets/icon.svg",

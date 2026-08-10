@@ -1,0 +1,130 @@
+name: Package plugin for OpenAI submission
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".agents/plugins/marketplace.json"
+      - ".github/workflows/plugin-package.yml"
+      - "plugins/google-comment-responder/**"
+      - "scripts/package_plugin.py"
+      - "README.md"
+      - "PRIVACY.md"
+      - "SUPPORT.md"
+      - "TERMS.md"
+      - "submission/**"
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  issues: write
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Package plugin
+        id: package
+        shell: bash
+        env:
+          FORBIDDEN_PART_1: Syd
+          FORBIDDEN_PART_2: ney
+        run: |
+          set -euo pipefail
+          short_sha="${GITHUB_SHA::7}"
+          python scripts/package_plugin.py \
+            --plugin-dir plugins/google-comment-responder \
+            --out dist \
+            --build-metadata "git.${GITHUB_RUN_NUMBER}.${short_sha}" \
+            --forbidden "${FORBIDDEN_PART_1}${FORBIDDEN_PART_2}" \
+            --metadata-json dist/package-metadata.json
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+
+          metadata = json.loads(Path("dist/package-metadata.json").read_text())
+          for key in ["version", "zip_name", "sha256"]:
+              print(f"{key}={metadata[key]}")
+          PY
+
+      - name: Upload plugin package artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: google-comment-responder-${{ steps.package.outputs.version }}
+          path: |
+            dist/*.zip
+            dist/package-metadata.json
+          if-no-files-found: error
+
+      - name: Create or update manual OpenAI publish issue
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/github-script@v7
+        continue-on-error: true
+        env:
+          VERSION: ${{ steps.package.outputs.version }}
+          ZIP_NAME: ${{ steps.package.outputs.zip_name }}
+          SHA256: ${{ steps.package.outputs.sha256 }}
+        with:
+          script: |
+            const marker = "<!-- google-comment-responder-openai-publish -->";
+            const runUrl = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+            const title = `Manual OpenAI publish needed: ${process.env.VERSION}`;
+            const body = `${marker}
+            A new Google Comment Responder package was built from \`${context.sha.slice(0, 7)}\`.
+
+            CI package:
+            - Version: \`${process.env.VERSION}\`
+            - ZIP: \`${process.env.ZIP_NAME}\`
+            - SHA-256: \`${process.env.SHA256}\`
+            - Workflow run and artifact: ${runUrl}
+
+            What CI already did:
+            - Validated the plugin manifest and required assets.
+            - Packaged the plugin into a ZIP with unique build metadata.
+            - Checked the plugin source and packaged manifest for configured forbidden text.
+
+            Manual OpenAI Platform step:
+            1. Download the ZIP artifact from the workflow run above.
+            2. Open the OpenAI plugin submission portal.
+            3. Upload the ZIP as the next plugin version.
+            4. Review Plugin Info, Prompts, Skills, tests, release notes, and availability.
+            5. Complete policy attestations only if the draft is accurate.
+            6. Submit for review.
+            7. After OpenAI approves it, publish the approved version from the portal.
+
+            This issue exists because OpenAI's public plugin flow currently uses the Platform portal for policy attestations, review submission, approval, and final publish.`;
+
+            const { owner, repo } = context.repo;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner,
+              repo,
+              state: "open",
+              per_page: 100,
+            });
+            const existing = issues.find((issue) => issue.body && issue.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.update({
+                owner,
+                repo,
+                issue_number: existing.number,
+                title,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title,
+                body,
+              });
+            }
