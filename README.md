@@ -1,6 +1,5 @@
 # Google Comment Responder
 
-
 ## Requirements
 - Google Drive access/tools to read or reply to comments.
 - Access to relevant context to answer comments.
@@ -14,31 +13,31 @@ https://chatgpt.com/plugins/plugins_6a735aa8168481918043403ac8a1e18f
 This is the supported install path for ChatGPT and Codex app users. It installs the currently published public version from the OpenAI Plugins Directory. Installation via the OpenAI Plugins Directory does not require manual updating. Manage or uninstall the plugin from the Plugins tab.
 
 
-## Manual GitHub Installation
+## Codex CLI Installation
 
-Use if the public marketplace install via CLI is unavailable, buggy, or not installing correctly. Add this GitHub repository as a Codex plugin marketplace, then install the plugin:
+Google Comment Responder is not currently available to install from Codex CLI's public plugin browser. OpenAI marketplace has not been updated since the plugin was published, so it is not yet available via the CLI public marketplace. 
+
+Until it is updated, **install manually from GitHub**.
+
+
+## Manual GitHub Usage
+
+**Install:**
 
 ```bash
 codex plugin marketplace add katnissali/google-comment-responder --ref main
 codex plugin add google-comment-responder@google-comment-responder
 ```
 
-Requires **manual updates**.
-
-## Updates
-
-Installation via public marketplace does not need manual updates.
+**Update:**
 
 ```bash
 codex plugin marketplace upgrade google-comment-responder
 codex plugin add google-comment-responder@google-comment-responder
 ```
 
-## Uninstall
-
-If installed manually via GitHub, uninstall with:
-
+**Uninstall:**
 ```bash
-codex plugin remove google-comment-responder
+codex plugin remove google-comment-responder@google-comment-responder
 codex plugin marketplace remove google-comment-responder
 ```
