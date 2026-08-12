@@ -3,6 +3,8 @@
 
 Use Codex/ChatGPT from within the Google Suite. Codex will respond to all comments starting with "AGENT:" using all context available from the original environment. Codex can continue threads by responding to responses.
 
+Codex will take into account the existing document and context surrounding the initial comment.
+
 **WARNING:** Codex comments appear as if they come from you. However, responses always begin with `CODEX:`.
 
 Trigger with:
