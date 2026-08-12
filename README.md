@@ -1,5 +1,13 @@
 # Google Comment Responder
 
+
+Use Codex/ChatGPT from within the Google Suite. Codex will respond to all comments starting with "AGENT:" using all context available from the original environment. Codex can continue threads by responding to responses.
+
+**WARNING:** Codex comments appear as if they come from you. However, responses always begin with `CODEX:`.
+
+Trigger with:
+`@Google Comment Responder Respond <link>.`
+
 ## Requirements
 - Google Drive access/tools to read or reply to comments.
 - Access to relevant context to answer comments.
