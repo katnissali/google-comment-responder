@@ -51,3 +51,7 @@ codex plugin add google-comment-responder@google-comment-responder
 codex plugin remove google-comment-responder@google-comment-responder
 codex plugin marketplace remove google-comment-responder
 ```
+
+## Guardrails
+- Does not create new comment threads. This isn't supported within the Google Drive tools.
+- Does not delete comments.
